@@ -1,6 +1,9 @@
 import org.jetbrains.kotlin.gradle.tasks.KotlinCompile
 import org.jooq.meta.jaxb.ForcedType
 
+val springBootVersion = "2.4.4"
+val springFrameworkVersion = "5.3.5"
+
 plugins {
 	id("org.springframework.boot") version "2.4.4"
 	id("io.spring.dependency-management") version "1.0.11.RELEASE"
@@ -18,11 +21,14 @@ repositories {
 }
 
 dependencies {
-	implementation("org.springframework.boot:spring-boot-starter:2.4.4")
-	implementation("org.springframework.boot:spring-boot-starter-web:2.4.4")
+	implementation("org.apache.commons:commons-dbcp2:2.0")
+	implementation("org.springframework.boot:spring-boot-starter:${springBootVersion}")
+	implementation("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
+	implementation("org.springframework:spring-jdbc:${springFrameworkVersion}")
+	implementation("org.springframework:spring-context:${springFrameworkVersion}")
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
-	testImplementation("org.springframework.boot:spring-boot-starter-test:2.4.4")
+	testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
 	jooqGenerator("org.mariadb.jdbc:mariadb-java-client:2.7.2")
 }
 
