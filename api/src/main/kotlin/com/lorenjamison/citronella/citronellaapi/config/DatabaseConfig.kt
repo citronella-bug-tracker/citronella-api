@@ -14,11 +14,10 @@ import org.springframework.jdbc.datasource.DataSourceTransactionManager
 import org.springframework.jdbc.datasource.TransactionAwareDataSourceProxy
 
 @Configuration
-class AppConfiguration (
-    @Value("database.url") val dbUrl : String,
-    @Value("database.username") val dbUsername : String,
-    @Value("database.password") val dbPassword : String,
-    @Value("database.driver") val dbDriver : String) {
+class DatabaseConfig (
+    @Value("\${database.url}") val dbUrl : String,
+    @Value("\${database.username}") val dbUsername : String,
+    @Value("\${database.password}") val dbPassword : String) {
 
     @Bean
     fun dataSource() : BasicDataSource {
@@ -26,7 +25,7 @@ class AppConfiguration (
         dataSource.url = dbUrl
         dataSource.username = dbUsername
         dataSource.password = dbPassword
-        dataSource.driverClassName = dbDriver
+        dataSource.driverClassName = "org.mariadb.jdbc.Driver"
         return dataSource
     }
 
