@@ -8,11 +8,11 @@ import org.jooq.DSLContext
 class UserDao(private val dslContext: DSLContext) {
 
     fun getUserById(id: Int): Users? {
-        return dslContext.fetchOne(USERS, USERS.ID.eq(id)).into(Users::class.java)
+        return dslContext.fetchOne(USERS, USERS.ID.eq(id))?.into(Users::class.java)
     }
 
     fun getUserByAuth0Id(auth0Id: String): Users? {
-        return dslContext.fetchOne(USERS, USERS.AUTH0_ID.eq(auth0Id)).into(Users::class.java)
+        return dslContext.fetchOne(USERS, USERS.AUTH0_ID.eq(auth0Id))?.into(Users::class.java)
     }
 
     fun createUser(user: Users) {

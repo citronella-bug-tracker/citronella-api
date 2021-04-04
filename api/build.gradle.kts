@@ -21,6 +21,8 @@ repositories {
 }
 
 dependencies {
+	jooqGenerator("org.mariadb.jdbc:mariadb-java-client:2.7.2")
+	implementation("org.mariadb.jdbc:mariadb-java-client:2.7.2")
 	implementation("org.apache.commons:commons-dbcp2:2.0")
 	implementation("org.springframework.boot:spring-boot-starter:${springBootVersion}")
 	implementation("org.springframework.boot:spring-boot-starter-web:${springBootVersion}")
@@ -29,7 +31,6 @@ dependencies {
 	implementation("org.jetbrains.kotlin:kotlin-reflect")
 	implementation("org.jetbrains.kotlin:kotlin-stdlib-jdk8")
 	testImplementation("org.springframework.boot:spring-boot-starter-test:${springBootVersion}")
-	jooqGenerator("org.mariadb.jdbc:mariadb-java-client:2.7.2")
 }
 
 tasks.withType<KotlinCompile> {

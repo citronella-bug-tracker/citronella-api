@@ -1,16 +1,29 @@
 package com.lorenjamison.citronella.citronellaapi.api.v1
 
-import org.springframework.web.bind.annotation.PostMapping
-import org.springframework.web.bind.annotation.RequestMapping
-import org.springframework.web.bind.annotation.RestController
+import com.lorenjamison.citronella.citronellaapi.service.UserService
+import com.lorenjamison.citronellaapi.data.generated.citronella.tables.pojos.Users
+import org.springframework.beans.factory.annotation.Autowired
+import org.springframework.web.bind.annotation.*
 
 @RestController
 @RequestMapping(value = ["/api/v1/users"])
-class UserApi {
-    @PostMapping(value = ["/"],
+class UserApi (@Autowired val userService: UserService) {
+    @PutMapping(value = ["/"],
         consumes = ["application/JSON"],
         produces = ["application/JSON"])
-    fun createUser() {
+    fun upsertUser(@RequestBody newUser: Users): Users? {
+        return userService.upsertUser(newUser)
+    }
 
+    @GetMapping(value = ["/{id}"],
+        produces = ["application/JSON"])
+    fun getUserById(@PathVariable id: Int): Users? {
+        return userService.getUserById(id)
+    }
+
+    @GetMapping(value = ["/auth0/{auth0Id}"],
+        produces = ["application/JSON"])
+    fun getUserByAuth0Id(@PathVariable auth0Id: String): Users? {
+        return userService.getUserByAuth0Id(auth0Id)
     }
 }

@@ -2,15 +2,18 @@ package com.lorenjamison.citronella.citronellaapi.service
 
 import com.lorenjamison.citronella.citronellaapi.dao.UserDao
 import com.lorenjamison.citronellaapi.data.generated.citronella.tables.pojos.Users
+import java.net.URLDecoder
+import java.nio.charset.StandardCharsets
 
 class UserService(private val userDao: UserDao) {
 
-    fun createUser(newUser: Users) {
-        userDao.createUser(newUser)
-    }
-
-    fun updateUser(userToUpdate: Users) {
-        userDao.updateUser(userToUpdate)
+    fun upsertUser(user: Users): Users? {
+        if (user.id == null) {
+            userDao.createUser(user)
+        } else {
+            userDao.updateUser(user)
+        }
+        return userDao.getUserByAuth0Id(user.auth0Id)
     }
 
     fun getUserById(id: Int): Users? {
