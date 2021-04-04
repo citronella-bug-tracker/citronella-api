@@ -13,6 +13,7 @@ import java.util.List;
 
 import org.jooq.Field;
 import org.jooq.ForeignKey;
+import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
 import org.jooq.Row5;
@@ -23,7 +24,6 @@ import org.jooq.TableOptions;
 import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
 import org.jooq.impl.TableImpl;
-import org.jooq.types.ULong;
 
 
 /**
@@ -32,7 +32,7 @@ import org.jooq.types.ULong;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Users extends TableImpl<UsersRecord> {
 
-    private static final long serialVersionUID = 1157500572;
+    private static final long serialVersionUID = 1697731412;
 
     /**
      * The reference instance of <code>citronella.users</code>
@@ -50,7 +50,7 @@ public class Users extends TableImpl<UsersRecord> {
     /**
      * The column <code>citronella.users.id</code>.
      */
-    public final TableField<UsersRecord, ULong> ID = createField(DSL.name("id"), org.jooq.impl.SQLDataType.BIGINTUNSIGNED.nullable(false), this, "");
+    public final TableField<UsersRecord, Integer> ID = createField(DSL.name("id"), org.jooq.impl.SQLDataType.INTEGER.nullable(false).identity(true), this, "");
 
     /**
      * The column <code>citronella.users.auth0_id</code>.
@@ -111,8 +111,18 @@ public class Users extends TableImpl<UsersRecord> {
     }
 
     @Override
+    public Identity<UsersRecord, Integer> getIdentity() {
+        return Keys.IDENTITY_USERS;
+    }
+
+    @Override
+    public UniqueKey<UsersRecord> getPrimaryKey() {
+        return Keys.KEY_USERS_PRIMARY;
+    }
+
+    @Override
     public List<UniqueKey<UsersRecord>> getKeys() {
-        return Arrays.<UniqueKey<UsersRecord>>asList(Keys.KEY_USERS_USERS_ID_IDX, Keys.KEY_USERS_USERS_AUTH0_ID_IDX);
+        return Arrays.<UniqueKey<UsersRecord>>asList(Keys.KEY_USERS_PRIMARY, Keys.KEY_USERS_USERS_AUTH0_ID_IDX);
     }
 
     @Override
@@ -146,7 +156,7 @@ public class Users extends TableImpl<UsersRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row5<ULong, String, String, String, String> fieldsRow() {
+    public Row5<Integer, String, String, String, String> fieldsRow() {
         return (Row5) super.fieldsRow();
     }
 }
