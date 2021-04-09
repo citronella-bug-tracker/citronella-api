@@ -60,7 +60,7 @@ jooq {
 					name = "org.jooq.codegen.DefaultGenerator"
 					database.apply {
 						name = "org.jooq.meta.mariadb.MariaDBDatabase"
-						includes = "users"
+						includes = "users|projects"
 						forcedTypes.addAll(arrayOf(
 							ForcedType()
 								.withName("varchar")

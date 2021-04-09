@@ -4,7 +4,9 @@
 package com.lorenjamison.citronellaapi.data.generated.citronella;
 
 
+import com.lorenjamison.citronellaapi.data.generated.citronella.tables.Projects;
 import com.lorenjamison.citronellaapi.data.generated.citronella.tables.Users;
+import com.lorenjamison.citronellaapi.data.generated.citronella.tables.records.ProjectsRecord;
 import com.lorenjamison.citronellaapi.data.generated.citronella.tables.records.UsersRecord;
 
 import org.jooq.Identity;
@@ -24,12 +26,14 @@ public class Keys {
     // IDENTITY definitions
     // -------------------------------------------------------------------------
 
+    public static final Identity<ProjectsRecord, Integer> IDENTITY_PROJECTS = Identities0.IDENTITY_PROJECTS;
     public static final Identity<UsersRecord, Integer> IDENTITY_USERS = Identities0.IDENTITY_USERS;
 
     // -------------------------------------------------------------------------
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
+    public static final UniqueKey<ProjectsRecord> KEY_PROJECTS_PRIMARY = UniqueKeys0.KEY_PROJECTS_PRIMARY;
     public static final UniqueKey<UsersRecord> KEY_USERS_PRIMARY = UniqueKeys0.KEY_USERS_PRIMARY;
     public static final UniqueKey<UsersRecord> KEY_USERS_USERS_AUTH0_ID_IDX = UniqueKeys0.KEY_USERS_USERS_AUTH0_ID_IDX;
 
@@ -43,10 +47,12 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     private static class Identities0 {
+        public static Identity<ProjectsRecord, Integer> IDENTITY_PROJECTS = Internal.createIdentity(Projects.PROJECTS, Projects.PROJECTS.ID);
         public static Identity<UsersRecord, Integer> IDENTITY_USERS = Internal.createIdentity(Users.USERS, Users.USERS.ID);
     }
 
     private static class UniqueKeys0 {
+        public static final UniqueKey<ProjectsRecord> KEY_PROJECTS_PRIMARY = Internal.createUniqueKey(Projects.PROJECTS, "KEY_projects_PRIMARY", new TableField[] { Projects.PROJECTS.ID }, true);
         public static final UniqueKey<UsersRecord> KEY_USERS_PRIMARY = Internal.createUniqueKey(Users.USERS, "KEY_users_PRIMARY", new TableField[] { Users.USERS.ID }, true);
         public static final UniqueKey<UsersRecord> KEY_USERS_USERS_AUTH0_ID_IDX = Internal.createUniqueKey(Users.USERS, "KEY_users_users_auth0_id_IDX", new TableField[] { Users.USERS.AUTH0_ID }, true);
     }

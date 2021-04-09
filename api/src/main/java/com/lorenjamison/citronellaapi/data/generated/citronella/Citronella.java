@@ -5,6 +5,7 @@ package com.lorenjamison.citronellaapi.data.generated.citronella;
 
 
 import com.lorenjamison.citronellaapi.data.generated.DefaultCatalog;
+import com.lorenjamison.citronellaapi.data.generated.citronella.tables.Projects;
 import com.lorenjamison.citronellaapi.data.generated.citronella.tables.Users;
 
 import java.util.Arrays;
@@ -21,12 +22,17 @@ import org.jooq.impl.SchemaImpl;
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Citronella extends SchemaImpl {
 
-    private static final long serialVersionUID = -2118177414;
+    private static final long serialVersionUID = -293731946;
 
     /**
      * The reference instance of <code>citronella</code>
      */
     public static final Citronella CITRONELLA = new Citronella();
+
+    /**
+     * The table <code>citronella.projects</code>.
+     */
+    public final Projects PROJECTS = Projects.PROJECTS;
 
     /**
      * The table <code>citronella.users</code>.
@@ -49,6 +55,7 @@ public class Citronella extends SchemaImpl {
     @Override
     public final List<Table<?>> getTables() {
         return Arrays.<Table<?>>asList(
+            Projects.PROJECTS,
             Users.USERS);
     }
 }

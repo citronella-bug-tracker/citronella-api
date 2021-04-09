@@ -4,6 +4,7 @@
 package com.lorenjamison.citronellaapi.data.generated.citronella;
 
 
+import com.lorenjamison.citronellaapi.data.generated.citronella.tables.Projects;
 import com.lorenjamison.citronellaapi.data.generated.citronella.tables.Users;
 
 
@@ -12,6 +13,11 @@ import com.lorenjamison.citronellaapi.data.generated.citronella.tables.Users;
  */
 @SuppressWarnings({ "all", "unchecked", "rawtypes" })
 public class Tables {
+
+    /**
+     * The table <code>citronella.projects</code>.
+     */
+    public static final Projects PROJECTS = Projects.PROJECTS;
 
     /**
      * The table <code>citronella.users</code>.
