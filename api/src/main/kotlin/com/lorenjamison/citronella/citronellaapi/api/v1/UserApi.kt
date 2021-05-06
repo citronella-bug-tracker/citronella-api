@@ -8,6 +8,7 @@ import org.springframework.web.bind.annotation.*
 @RestController
 @RequestMapping(value = ["/api/v1/users"])
 class UserApi (@Autowired val userService: UserService) {
+
     @PutMapping(value = ["/"],
         consumes = ["application/JSON"],
         produces = ["application/JSON"])
@@ -26,4 +27,5 @@ class UserApi (@Autowired val userService: UserService) {
     fun getUserByAuth0Id(@PathVariable auth0Id: String): Users? {
         return userService.getUserByAuth0Id(auth0Id)
     }
+
 }

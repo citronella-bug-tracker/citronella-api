@@ -2,8 +2,6 @@ package com.lorenjamison.citronella.citronellaapi.service
 
 import com.lorenjamison.citronella.citronellaapi.dao.UserDao
 import com.lorenjamison.citronellaapi.data.generated.citronella.tables.pojos.Users
-import java.net.URLDecoder
-import java.nio.charset.StandardCharsets
 
 class UserService(private val userDao: UserDao) {
 
