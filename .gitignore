@@ -24,3 +24,5 @@ hs_err_pid*
 
 # ignore intellij .idea directory
 .idea
+
+api/target

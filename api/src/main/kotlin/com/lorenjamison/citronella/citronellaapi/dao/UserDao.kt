@@ -1,8 +1,8 @@
 package com.lorenjamison.citronella.citronellaapi.dao
 
-import com.lorenjamison.citronellaapi.data.generated.citronella.tables.Users.*
-import com.lorenjamison.citronellaapi.data.generated.citronella.tables.pojos.Users
-import com.lorenjamison.citronellaapi.data.generated.citronella.tables.records.UsersRecord
+import com.lorenjamison.citronella.data.generated.citronella.tables.Users.*
+import com.lorenjamison.citronella.data.generated.citronella.tables.pojos.Users
+import com.lorenjamison.citronella.data.generated.citronella.tables.records.UsersRecord
 import org.jooq.DSLContext
 
 class UserDao(private val dslContext: DSLContext) {
