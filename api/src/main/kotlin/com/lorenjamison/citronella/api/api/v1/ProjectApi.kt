@@ -1,6 +1,6 @@
-package com.lorenjamison.citronella.citronellaapi.api.v1
+package com.lorenjamison.citronella.api.api.v1
 
-import com.lorenjamison.citronella.citronellaapi.service.ProjectService
+import com.lorenjamison.citronella.api.service.ProjectService
 import com.lorenjamison.citronella.data.generated.citronella.tables.pojos.Projects
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*

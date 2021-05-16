@@ -1,4 +1,4 @@
-package com.lorenjamison.citronella.citronellaapi
+package com.lorenjamison.citronella.api
 
 import org.springframework.boot.autoconfigure.SpringBootApplication
 import org.springframework.boot.runApplication

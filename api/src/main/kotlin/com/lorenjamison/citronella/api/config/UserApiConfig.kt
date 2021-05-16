@@ -1,7 +1,7 @@
-package com.lorenjamison.citronella.citronellaapi.config
+package com.lorenjamison.citronella.api.config
 
-import com.lorenjamison.citronella.citronellaapi.dao.UserDao
-import com.lorenjamison.citronella.citronellaapi.service.UserService
+import com.lorenjamison.citronella.api.dao.UserDao
+import com.lorenjamison.citronella.api.service.UserService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 import org.springframework.context.annotation.Configuration

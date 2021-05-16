@@ -1,4 +1,4 @@
-package com.lorenjamison.citronella.citronellaapi.dao
+package com.lorenjamison.citronella.api.dao
 
 import org.jooq.DSLContext
 

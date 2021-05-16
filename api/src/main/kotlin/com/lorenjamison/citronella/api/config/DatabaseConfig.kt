@@ -1,6 +1,6 @@
-package com.lorenjamison.citronella.citronellaapi.config
+package com.lorenjamison.citronella.api.config
 
-import com.lorenjamison.citronella.citronellaapi.exception.ExceptionTranslator
+import com.lorenjamison.citronella.api.exception.ExceptionTranslator
 import org.apache.commons.dbcp2.BasicDataSource
 import org.jooq.SQLDialect
 import org.jooq.impl.DataSourceConnectionProvider

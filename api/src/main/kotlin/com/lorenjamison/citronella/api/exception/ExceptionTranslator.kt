@@ -1,4 +1,4 @@
-package com.lorenjamison.citronella.citronellaapi.exception
+package com.lorenjamison.citronella.api.exception
 
 import org.jooq.ExecuteContext
 import org.jooq.SQLDialect

@@ -1,7 +1,7 @@
-package com.lorenjamison.citronella.citronellaapi.config
+package com.lorenjamison.citronella.api.config
 
-import com.lorenjamison.citronella.citronellaapi.dao.ProjectDao
-import com.lorenjamison.citronella.citronellaapi.service.ProjectService
+import com.lorenjamison.citronella.api.dao.ProjectDao
+import com.lorenjamison.citronella.api.service.ProjectService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
 
