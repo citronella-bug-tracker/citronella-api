@@ -27,6 +27,7 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final UniqueKey<ProjectRecord> KEY_PROJECT_PRIMARY = Internal.createUniqueKey(Project.PROJECT, DSL.name("KEY_project_PRIMARY"), new TableField[] { Project.PROJECT.ID }, true);
+    public static final UniqueKey<ProjectRecord> KEY_PROJECT_PROJECT_PROJECT_KEY_IDX = Internal.createUniqueKey(Project.PROJECT, DSL.name("KEY_project_project_project_key_IDX"), new TableField[] { Project.PROJECT.PROJECT_KEY }, true);
     public static final UniqueKey<UserRecord> KEY_USER_PRIMARY = Internal.createUniqueKey(User.USER, DSL.name("KEY_user_PRIMARY"), new TableField[] { User.USER.ID }, true);
     public static final UniqueKey<UserRecord> KEY_USER_USER_EXTERNAL_ID_IDX = Internal.createUniqueKey(User.USER, DSL.name("KEY_user_user_external_id_IDX"), new TableField[] { User.USER.EXTERNAL_ID }, true);
 }

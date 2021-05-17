@@ -4,7 +4,9 @@ import com.lorenjamison.citronella.api.dao.ProjectDao
 import com.lorenjamison.citronella.api.service.ProjectService
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.context.annotation.Bean
+import org.springframework.context.annotation.Configuration
 
+@Configuration
 class ProjectApiConfig {
     @Autowired
     lateinit var databaseConfig: DatabaseConfig

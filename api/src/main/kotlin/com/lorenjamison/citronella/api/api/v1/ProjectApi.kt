@@ -18,13 +18,19 @@ class ProjectApi(@Autowired val projectService: ProjectService) {
 
     @GetMapping(value = ["/{id}"],
         produces = ["application/JSON"])
-    fun getProjectById(@PathVariable id: String): Project? {
+    fun getProjectById(@PathVariable id: Int): Project? {
         return projectService.getProjectById(id)
     }
 
-    @DeleteMapping(value = ["/{id}/delete"])
-    fun deleteProject(@PathVariable id: String) {
-        projectService.deleteProject(id)
+    @GetMapping(value = ["/key/{projectKey}"],
+        produces = ["application/JSON"])
+    fun getProjectById(@PathVariable projectKey: String): Project? {
+        return projectService.getProjectByKey(projectKey)
+    }
+
+    @DeleteMapping(value = ["/{id}"])
+    fun archiveProject(@PathVariable id: Int) {
+        projectService.archiveProject(id)
     }
 
     //TODO: implement project search

@@ -118,7 +118,7 @@ public class Project extends TableImpl<ProjectRecord> {
 
     @Override
     public List<UniqueKey<ProjectRecord>> getKeys() {
-        return Arrays.<UniqueKey<ProjectRecord>>asList(Keys.KEY_PROJECT_PRIMARY);
+        return Arrays.<UniqueKey<ProjectRecord>>asList(Keys.KEY_PROJECT_PRIMARY, Keys.KEY_PROJECT_PROJECT_PROJECT_KEY_IDX);
     }
 
     @Override

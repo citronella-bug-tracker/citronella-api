@@ -11,14 +11,14 @@ class UserService(private val userDao: UserDao) {
         } else {
             userDao.updateUser(user)
         }
-        return userDao.getUserByExternalId(user.externalId)
+        return getUserByExternalId(user.externalId)
     }
 
     fun getUserById(id: Int): User? {
         return userDao.getUserById(id)
     }
 
-    fun getUserByExternalId(auth0Id: String): User? {
-        return userDao.getUserByExternalId(auth0Id)
+    fun getUserByExternalId(externalId: String): User? {
+        return userDao.getUserByExternalId(externalId)
     }
 }

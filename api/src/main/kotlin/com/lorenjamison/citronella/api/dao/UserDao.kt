@@ -16,13 +16,13 @@ class UserDao(private val dslContext: DSLContext) {
     }
 
     fun createUser(user: User) {
-        val newUserRecord: UserRecord = dslContext.newRecord(USER, user)
-        newUserRecord.store()
+        val userRecord: UserRecord = dslContext.newRecord(USER, user)
+        userRecord.store()
     }
 
     fun updateUser(user: User) {
-        val updatedUserRecord: UserRecord = dslContext.newRecord(USER, user)
-        dslContext.executeUpdate(updatedUserRecord)
+        val userRecord: UserRecord = dslContext.newRecord(USER, user)
+        dslContext.executeUpdate(userRecord)
     }
 
 }
