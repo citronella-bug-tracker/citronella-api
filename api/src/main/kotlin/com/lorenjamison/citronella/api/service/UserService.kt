@@ -1,24 +1,24 @@
 package com.lorenjamison.citronella.api.service
 
 import com.lorenjamison.citronella.api.dao.UserDao
-import com.lorenjamison.citronella.data.generated.citronella.tables.pojos.Users
+import com.lorenjamison.citronella.data.generated.citronella.tables.pojos.User
 
 class UserService(private val userDao: UserDao) {
 
-    fun upsertUser(user: Users): Users? {
+    fun upsertUser(user: User): User? {
         if (user.id == null) {
             userDao.createUser(user)
         } else {
             userDao.updateUser(user)
         }
-        return userDao.getUserByAuth0Id(user.auth0Id)
+        return userDao.getUserByExternalId(user.externalId)
     }
 
-    fun getUserById(id: Int): Users? {
+    fun getUserById(id: Int): User? {
         return userDao.getUserById(id)
     }
 
-    fun getUserByAuth0Id(auth0Id: String): Users? {
-        return userDao.getUserByAuth0Id(auth0Id)
+    fun getUserByExternalId(auth0Id: String): User? {
+        return userDao.getUserByExternalId(auth0Id)
     }
 }

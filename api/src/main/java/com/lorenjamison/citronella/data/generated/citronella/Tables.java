@@ -4,8 +4,8 @@
 package com.lorenjamison.citronella.data.generated.citronella;
 
 
-import com.lorenjamison.citronella.data.generated.citronella.tables.Projects;
-import com.lorenjamison.citronella.data.generated.citronella.tables.Users;
+import com.lorenjamison.citronella.data.generated.citronella.tables.Project;
+import com.lorenjamison.citronella.data.generated.citronella.tables.User;
 
 
 /**
@@ -15,12 +15,12 @@ import com.lorenjamison.citronella.data.generated.citronella.tables.Users;
 public class Tables {
 
     /**
-     * The table <code>citronella.projects</code>.
+     * The table <code>citronella.project</code>.
      */
-    public static final Projects PROJECTS = Projects.PROJECTS;
+    public static final Project PROJECT = Project.PROJECT;
 
     /**
-     * The table <code>citronella.users</code>.
+     * The table <code>citronella.user</code>.
      */
-    public static final Users USERS = Users.USERS;
+    public static final User USER = User.USER;
 }

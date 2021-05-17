@@ -1,7 +1,7 @@
 package com.lorenjamison.citronella.api.api.v1
 
 import com.lorenjamison.citronella.api.service.ProjectService
-import com.lorenjamison.citronella.data.generated.citronella.tables.pojos.Projects
+import com.lorenjamison.citronella.data.generated.citronella.tables.pojos.Project
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
@@ -12,13 +12,13 @@ class ProjectApi(@Autowired val projectService: ProjectService) {
     @PutMapping(value = ["/"],
         consumes = ["application/JSON"],
         produces = ["application/JSON"])
-    fun upsertProject(@RequestBody project: Projects): Projects? {
+    fun upsertProject(@RequestBody project: Project): Project? {
         return projectService.upsertProject(project)
     }
 
     @GetMapping(value = ["/{id}"],
         produces = ["application/JSON"])
-    fun getProjectById(@PathVariable id: String): Projects? {
+    fun getProjectById(@PathVariable id: String): Project? {
         return projectService.getProjectById(id)
     }
 
@@ -31,7 +31,7 @@ class ProjectApi(@Autowired val projectService: ProjectService) {
 //    @GetMapping(value = ["/search"],
 //        consumes = ["application/JSON"],
 //        produces = ["application/JSON"])
-//    fun searchProjects(@RequestBody searchCriteria: ProjectSearchCriteriaBean): List<Projects>? {
+//    fun searchProjects(@RequestBody searchCriteria: ProjectSearchCriteriaBean): List<Project>? {
 //        return projectService.searchProjects(searchCriteria)
 //    }
 }

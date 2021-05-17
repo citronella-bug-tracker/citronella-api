@@ -1,15 +1,15 @@
 package com.lorenjamison.citronella.api.service
 
 import com.lorenjamison.citronella.api.dao.ProjectDao
-import com.lorenjamison.citronella.data.generated.citronella.tables.pojos.Projects
+import com.lorenjamison.citronella.data.generated.citronella.tables.pojos.Project
 
 class ProjectService(private val projectDao: ProjectDao) {
 
-    fun upsertProject(project: Projects): Projects? {
+    fun upsertProject(project: Project): Project? {
 
     }
 
-    fun getProjectById(id: String): Projects? {
+    fun getProjectById(id: String): Project? {
 
     }
 

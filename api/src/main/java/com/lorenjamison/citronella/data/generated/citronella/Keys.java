@@ -4,10 +4,10 @@
 package com.lorenjamison.citronella.data.generated.citronella;
 
 
-import com.lorenjamison.citronella.data.generated.citronella.tables.Projects;
-import com.lorenjamison.citronella.data.generated.citronella.tables.Users;
-import com.lorenjamison.citronella.data.generated.citronella.tables.records.ProjectsRecord;
-import com.lorenjamison.citronella.data.generated.citronella.tables.records.UsersRecord;
+import com.lorenjamison.citronella.data.generated.citronella.tables.Project;
+import com.lorenjamison.citronella.data.generated.citronella.tables.User;
+import com.lorenjamison.citronella.data.generated.citronella.tables.records.ProjectRecord;
+import com.lorenjamison.citronella.data.generated.citronella.tables.records.UserRecord;
 
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
@@ -26,7 +26,7 @@ public class Keys {
     // UNIQUE and PRIMARY KEY definitions
     // -------------------------------------------------------------------------
 
-    public static final UniqueKey<ProjectsRecord> KEY_PROJECTS_PRIMARY = Internal.createUniqueKey(Projects.PROJECTS, DSL.name("KEY_projects_PRIMARY"), new TableField[] { Projects.PROJECTS.ID }, true);
-    public static final UniqueKey<UsersRecord> KEY_USERS_PRIMARY = Internal.createUniqueKey(Users.USERS, DSL.name("KEY_users_PRIMARY"), new TableField[] { Users.USERS.ID }, true);
-    public static final UniqueKey<UsersRecord> KEY_USERS_USERS_AUTH0_ID_IDX = Internal.createUniqueKey(Users.USERS, DSL.name("KEY_users_users_auth0_id_IDX"), new TableField[] { Users.USERS.AUTH0_ID }, true);
+    public static final UniqueKey<ProjectRecord> KEY_PROJECT_PRIMARY = Internal.createUniqueKey(Project.PROJECT, DSL.name("KEY_project_PRIMARY"), new TableField[] { Project.PROJECT.ID }, true);
+    public static final UniqueKey<UserRecord> KEY_USER_PRIMARY = Internal.createUniqueKey(User.USER, DSL.name("KEY_user_PRIMARY"), new TableField[] { User.USER.ID }, true);
+    public static final UniqueKey<UserRecord> KEY_USER_USER_EXTERNAL_ID_IDX = Internal.createUniqueKey(User.USER, DSL.name("KEY_user_user_external_id_IDX"), new TableField[] { User.USER.EXTERNAL_ID }, true);
 }

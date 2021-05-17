@@ -1,7 +1,7 @@
 package com.lorenjamison.citronella.api.api.v1
 
 import com.lorenjamison.citronella.api.service.UserService
-import com.lorenjamison.citronella.data.generated.citronella.tables.pojos.Users
+import com.lorenjamison.citronella.data.generated.citronella.tables.pojos.User
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.web.bind.annotation.*
 
@@ -12,20 +12,20 @@ class UserApi (@Autowired val userService: UserService) {
     @PutMapping(value = ["/"],
         consumes = ["application/JSON"],
         produces = ["application/JSON"])
-    fun upsertUser(@RequestBody newUser: Users): Users? {
+    fun upsertUser(@RequestBody newUser: User): User? {
         return userService.upsertUser(newUser)
     }
 
     @GetMapping(value = ["/{id}"],
         produces = ["application/JSON"])
-    fun getUserById(@PathVariable id: Int): Users? {
+    fun getUserById(@PathVariable id: Int): User? {
         return userService.getUserById(id)
     }
 
-    @GetMapping(value = ["/auth0/{auth0Id}"],
+    @GetMapping(value = ["/external/{externalId}"],
         produces = ["application/JSON"])
-    fun getUserByAuth0Id(@PathVariable auth0Id: String): Users? {
-        return userService.getUserByAuth0Id(auth0Id)
+    fun getUserByExternalId(@PathVariable externalId: String): User? {
+        return userService.getUserByExternalId(externalId)
     }
 
 }

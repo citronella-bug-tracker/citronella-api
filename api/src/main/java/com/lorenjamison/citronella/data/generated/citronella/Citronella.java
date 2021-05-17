@@ -5,8 +5,8 @@ package com.lorenjamison.citronella.data.generated.citronella;
 
 
 import com.lorenjamison.citronella.data.generated.DefaultCatalog;
-import com.lorenjamison.citronella.data.generated.citronella.tables.Projects;
-import com.lorenjamison.citronella.data.generated.citronella.tables.Users;
+import com.lorenjamison.citronella.data.generated.citronella.tables.Project;
+import com.lorenjamison.citronella.data.generated.citronella.tables.User;
 
 import java.util.Arrays;
 import java.util.List;
@@ -30,14 +30,14 @@ public class Citronella extends SchemaImpl {
     public static final Citronella CITRONELLA = new Citronella();
 
     /**
-     * The table <code>citronella.projects</code>.
+     * The table <code>citronella.project</code>.
      */
-    public final Projects PROJECTS = Projects.PROJECTS;
+    public final Project PROJECT = Project.PROJECT;
 
     /**
-     * The table <code>citronella.users</code>.
+     * The table <code>citronella.user</code>.
      */
-    public final Users USERS = Users.USERS;
+    public final User USER = User.USER;
 
     /**
      * No further instances allowed
@@ -55,7 +55,7 @@ public class Citronella extends SchemaImpl {
     @Override
     public final List<Table<?>> getTables() {
         return Arrays.<Table<?>>asList(
-            Projects.PROJECTS,
-            Users.USERS);
+            Project.PROJECT,
+            User.USER);
     }
 }

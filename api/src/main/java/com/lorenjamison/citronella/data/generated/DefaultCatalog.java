@@ -5,7 +5,7 @@ package com.lorenjamison.citronella.data.generated;
 
 
 import com.lorenjamison.citronella.data.generated.citronella.Citronella;
-import com.lorenjamison.citronella.data.generated.performance_schema.PerformanceSchema;
+import com.lorenjamison.citronella.data.generated.mysql.Mysql;
 
 import java.util.Arrays;
 import java.util.List;
@@ -33,9 +33,9 @@ public class DefaultCatalog extends CatalogImpl {
     public final Citronella CITRONELLA = Citronella.CITRONELLA;
 
     /**
-     * The schema <code>performance_schema</code>.
+     * The schema <code>mysql</code>.
      */
-    public final PerformanceSchema PERFORMANCE_SCHEMA = PerformanceSchema.PERFORMANCE_SCHEMA;
+    public final Mysql MYSQL = Mysql.MYSQL;
 
     /**
      * No further instances allowed
@@ -48,6 +48,6 @@ public class DefaultCatalog extends CatalogImpl {
     public final List<Schema> getSchemas() {
         return Arrays.<Schema>asList(
             Citronella.CITRONELLA,
-            PerformanceSchema.PERFORMANCE_SCHEMA);
+            Mysql.MYSQL);
     }
 }

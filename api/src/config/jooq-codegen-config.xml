@@ -9,7 +9,10 @@
         <name>org.jooq.codegen.DefaultGenerator</name>
         <database>
             <name>org.jooq.meta.mariadb.MariaDBDatabase</name>
-            <includes>users|projects</includes>
+            <includes>
+                user
+                |project
+            </includes>
             <forcedTypes>
                 <forcedType>
                     <name>varchar</name>
