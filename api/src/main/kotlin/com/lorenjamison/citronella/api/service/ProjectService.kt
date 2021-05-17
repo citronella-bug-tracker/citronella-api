@@ -1,7 +1,7 @@
 package com.lorenjamison.citronella.api.service
 
 import com.lorenjamison.citronella.api.dao.ProjectDao
-import com.lorenjamison.citronella.data.generated.citronella.tables.pojos.Project
+import com.lorenjamison.citronella.data.generated.tables.pojos.Project
 
 class ProjectService(private val projectDao: ProjectDao) {
 

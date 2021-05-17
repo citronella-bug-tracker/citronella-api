@@ -1,7 +1,7 @@
 package com.lorenjamison.citronella.api.service
 
 import com.lorenjamison.citronella.api.dao.UserDao
-import com.lorenjamison.citronella.data.generated.citronella.tables.pojos.User
+import com.lorenjamison.citronella.data.generated.tables.pojos.User
 
 class UserService(private val userDao: UserDao) {
 
