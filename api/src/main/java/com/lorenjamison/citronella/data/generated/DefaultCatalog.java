@@ -4,9 +4,6 @@
 package com.lorenjamison.citronella.data.generated;
 
 
-import com.lorenjamison.citronella.data.generated.citronella.Citronella;
-import com.lorenjamison.citronella.data.generated.mysql.Mysql;
-
 import java.util.Arrays;
 import java.util.List;
 
@@ -33,11 +30,6 @@ public class DefaultCatalog extends CatalogImpl {
     public final Citronella CITRONELLA = Citronella.CITRONELLA;
 
     /**
-     * The schema <code>mysql</code>.
-     */
-    public final Mysql MYSQL = Mysql.MYSQL;
-
-    /**
      * No further instances allowed
      */
     private DefaultCatalog() {
@@ -47,7 +39,6 @@ public class DefaultCatalog extends CatalogImpl {
     @Override
     public final List<Schema> getSchemas() {
         return Arrays.<Schema>asList(
-            Citronella.CITRONELLA,
-            Mysql.MYSQL);
+            Citronella.CITRONELLA);
     }
 }
