@@ -6,15 +6,17 @@ import com.lorenjamison.citronella.data.generated.tables.pojos.Project
 class ProjectService(private val projectDao: ProjectDao) {
 
     fun upsertProject(project: Project): Project? {
+        val returnProjectId: Long
         if (project.id == null) {
-            projectDao.createProject(project)
+            returnProjectId = projectDao.createProject(project)
         } else {
+            returnProjectId = project.id
             projectDao.updateProject(project)
         }
-        return getProjectByKey(project.projectKey)
+        return getProjectById(returnProjectId)
     }
 
-    fun getProjectById(id: Int): Project? {
+    fun getProjectById(id: Long): Project? {
         return projectDao.getProjectById(id)
     }
 
@@ -22,7 +24,7 @@ class ProjectService(private val projectDao: ProjectDao) {
         return projectDao.getProjectByKey(projectKey)
     }
 
-    fun archiveProject(id: Int) {
+    fun archiveProject(id: Long) {
         projectDao.archiveProject(id)
     }
 

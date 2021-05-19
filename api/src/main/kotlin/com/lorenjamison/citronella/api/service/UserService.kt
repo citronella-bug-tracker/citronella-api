@@ -6,15 +6,17 @@ import com.lorenjamison.citronella.data.generated.tables.pojos.User
 class UserService(private val userDao: UserDao) {
 
     fun upsertUser(user: User): User? {
+        val returnUserId: Long
         if (user.id == null) {
-            userDao.createUser(user)
+            returnUserId = userDao.createUser(user)
         } else {
+            returnUserId = user.id
             userDao.updateUser(user)
         }
-        return getUserByExternalId(user.externalId)
+        return getUserById(returnUserId)
     }
 
-    fun getUserById(id: Int): User? {
+    fun getUserById(id: Long): User? {
         return userDao.getUserById(id)
     }
 

@@ -9,7 +9,7 @@ const val ARCHIVED: Byte = 1
 
 class ProjectDao(private val dslContext: DSLContext) {
 
-    fun getProjectById(id: Int): Project? {
+    fun getProjectById(id: Long): Project? {
         return dslContext.fetchOne(PROJECT, PROJECT.ID.eq(id))?.into(Project::class.java)
     }
 
@@ -17,9 +17,10 @@ class ProjectDao(private val dslContext: DSLContext) {
         return dslContext.fetchOne(PROJECT, PROJECT.PROJECT_KEY.eq(projectKey))?.into(Project::class.java)
     }
 
-    fun createProject(project: Project) {
+    fun createProject(project: Project): Long {
         val projectRecord: ProjectRecord = dslContext.newRecord(PROJECT, project)
         projectRecord.store()
+        return dslContext.lastID().toLong()
     }
 
     fun updateProject(project: Project) {
@@ -27,7 +28,7 @@ class ProjectDao(private val dslContext: DSLContext) {
         dslContext.executeUpdate(projectRecord)
     }
 
-    fun archiveProject(projectId: Int) {
+    fun archiveProject(projectId: Long) {
         dslContext.update(PROJECT)
             .set(PROJECT.ARCHIVED, ARCHIVED)
             .where(PROJECT.ID.eq(projectId))

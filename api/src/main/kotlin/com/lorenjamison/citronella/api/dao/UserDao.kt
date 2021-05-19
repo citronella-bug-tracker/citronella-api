@@ -7,17 +7,18 @@ import org.jooq.DSLContext
 
 class UserDao(private val dslContext: DSLContext) {
 
-    fun getUserById(id: Int): User? {
+    fun getUserById(id: Long): User? {
         return dslContext.fetchOne(USER, USER.ID.eq(id))?.into(User::class.java)
     }
 
-    fun getUserByExternalId(auth0Id: String): User? {
-        return dslContext.fetchOne(USER, USER.EXTERNAL_ID.eq(auth0Id))?.into(User::class.java)
+    fun getUserByExternalId(externalId: String): User? {
+        return dslContext.fetchOne(USER, USER.EXTERNAL_ID.eq(externalId))?.into(User::class.java)
     }
 
-    fun createUser(user: User) {
+    fun createUser(user: User): Long {
         val userRecord: UserRecord = dslContext.newRecord(USER, user)
         userRecord.store()
+        return dslContext.lastID().toLong()
     }
 
     fun updateUser(user: User) {
