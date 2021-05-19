@@ -15,10 +15,10 @@ public class Project implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final Integer id;
-    private final String  name;
-    private final String  projectKey;
-    private final Byte    archived;
+    private final Long   id;
+    private final String name;
+    private final String projectKey;
+    private final Byte   archived;
 
     public Project(Project value) {
         this.id = value.id;
@@ -28,10 +28,10 @@ public class Project implements Serializable {
     }
 
     public Project(
-        Integer id,
-        String  name,
-        String  projectKey,
-        Byte    archived
+        Long   id,
+        String name,
+        String projectKey,
+        Byte   archived
     ) {
         this.id = id;
         this.name = name;
@@ -42,7 +42,7 @@ public class Project implements Serializable {
     /**
      * Getter for <code>citronella.project.id</code>.
      */
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
 

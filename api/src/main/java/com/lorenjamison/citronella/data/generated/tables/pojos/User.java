@@ -15,11 +15,11 @@ public class User implements Serializable {
 
     private static final long serialVersionUID = 1L;
 
-    private final Integer id;
-    private final String  externalId;
-    private final String  firstName;
-    private final String  lastName;
-    private final String  email;
+    private final Long   id;
+    private final String externalId;
+    private final String firstName;
+    private final String lastName;
+    private final String email;
 
     public User(User value) {
         this.id = value.id;
@@ -30,11 +30,11 @@ public class User implements Serializable {
     }
 
     public User(
-        Integer id,
-        String  externalId,
-        String  firstName,
-        String  lastName,
-        String  email
+        Long   id,
+        String externalId,
+        String firstName,
+        String lastName,
+        String email
     ) {
         this.id = id;
         this.externalId = externalId;
@@ -46,7 +46,7 @@ public class User implements Serializable {
     /**
      * Getter for <code>citronella.user.id</code>.
      */
-    public Integer getId() {
+    public Long getId() {
         return this.id;
     }
 

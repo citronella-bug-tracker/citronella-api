@@ -51,7 +51,7 @@ public class Project extends TableImpl<ProjectRecord> {
     /**
      * The column <code>citronella.project.id</code>.
      */
-    public final TableField<ProjectRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false).identity(true), this, "");
+    public final TableField<ProjectRecord, Long> ID = createField(DSL.name("id"), SQLDataType.BIGINT.nullable(false).identity(true), this, "");
 
     /**
      * The column <code>citronella.project.name</code>.
@@ -107,8 +107,8 @@ public class Project extends TableImpl<ProjectRecord> {
     }
 
     @Override
-    public Identity<ProjectRecord, Integer> getIdentity() {
-        return (Identity<ProjectRecord, Integer>) super.getIdentity();
+    public Identity<ProjectRecord, Long> getIdentity() {
+        return (Identity<ProjectRecord, Long>) super.getIdentity();
     }
 
     @Override
@@ -152,7 +152,7 @@ public class Project extends TableImpl<ProjectRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row4<Integer, String, String, Byte> fieldsRow() {
+    public Row4<Long, String, String, Byte> fieldsRow() {
         return (Row4) super.fieldsRow();
     }
 }

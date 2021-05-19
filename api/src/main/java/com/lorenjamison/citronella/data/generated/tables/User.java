@@ -51,7 +51,7 @@ public class User extends TableImpl<UserRecord> {
     /**
      * The column <code>citronella.user.id</code>.
      */
-    public final TableField<UserRecord, Integer> ID = createField(DSL.name("id"), SQLDataType.INTEGER.nullable(false).identity(true), this, "");
+    public final TableField<UserRecord, Long> ID = createField(DSL.name("id"), SQLDataType.BIGINT.nullable(false).identity(true), this, "");
 
     /**
      * The column <code>citronella.user.external_id</code>.
@@ -112,8 +112,8 @@ public class User extends TableImpl<UserRecord> {
     }
 
     @Override
-    public Identity<UserRecord, Integer> getIdentity() {
-        return (Identity<UserRecord, Integer>) super.getIdentity();
+    public Identity<UserRecord, Long> getIdentity() {
+        return (Identity<UserRecord, Long>) super.getIdentity();
     }
 
     @Override
@@ -157,7 +157,7 @@ public class User extends TableImpl<UserRecord> {
     // -------------------------------------------------------------------------
 
     @Override
-    public Row5<Integer, String, String, String, String> fieldsRow() {
+    public Row5<Long, String, String, String, String> fieldsRow() {
         return (Row5) super.fieldsRow();
     }
 }
