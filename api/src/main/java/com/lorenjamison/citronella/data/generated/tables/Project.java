@@ -16,7 +16,7 @@ import org.jooq.ForeignKey;
 import org.jooq.Identity;
 import org.jooq.Name;
 import org.jooq.Record;
-import org.jooq.Row4;
+import org.jooq.Row5;
 import org.jooq.Schema;
 import org.jooq.Table;
 import org.jooq.TableField;
@@ -25,6 +25,7 @@ import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
 import org.jooq.impl.SQLDataType;
 import org.jooq.impl.TableImpl;
+import org.jooq.types.ULong;
 
 
 /**
@@ -59,14 +60,19 @@ public class Project extends TableImpl<ProjectRecord> {
     public final TableField<ProjectRecord, String> NAME = createField(DSL.name("name"), SQLDataType.VARCHAR(100).nullable(false), this, "");
 
     /**
-     * The column <code>citronella.project.project_key</code>.
+     * The column <code>citronella.project.issue_prefix</code>.
      */
-    public final TableField<ProjectRecord, String> PROJECT_KEY = createField(DSL.name("project_key"), SQLDataType.VARCHAR(10).nullable(false), this, "");
+    public final TableField<ProjectRecord, String> ISSUE_PREFIX = createField(DSL.name("issue_prefix"), SQLDataType.VARCHAR(10).nullable(false), this, "");
 
     /**
      * The column <code>citronella.project.archived</code>.
      */
     public final TableField<ProjectRecord, Byte> ARCHIVED = createField(DSL.name("archived"), SQLDataType.TINYINT.defaultValue(DSL.field("NULL", SQLDataType.TINYINT)), this, "");
+
+    /**
+     * The column <code>citronella.project.next_issue_num</code>.
+     */
+    public final TableField<ProjectRecord, ULong> NEXT_ISSUE_NUM = createField(DSL.name("next_issue_num"), SQLDataType.BIGINTUNSIGNED.nullable(false), this, "");
 
     private Project(Name alias, Table<ProjectRecord> aliased) {
         this(alias, aliased, null);
@@ -148,11 +154,11 @@ public class Project extends TableImpl<ProjectRecord> {
     }
 
     // -------------------------------------------------------------------------
-    // Row4 type methods
+    // Row5 type methods
     // -------------------------------------------------------------------------
 
     @Override
-    public Row4<Long, String, String, Byte> fieldsRow() {
-        return (Row4) super.fieldsRow();
+    public Row5<Long, String, String, Byte, ULong> fieldsRow() {
+        return (Row5) super.fieldsRow();
     }
 }

@@ -5,6 +5,7 @@ package com.lorenjamison.citronella.data.generated;
 
 
 import com.lorenjamison.citronella.data.generated.tables.Project;
+import com.lorenjamison.citronella.data.generated.tables.Sprint;
 import com.lorenjamison.citronella.data.generated.tables.User;
 
 
@@ -18,6 +19,11 @@ public class Tables {
      * The table <code>citronella.project</code>.
      */
     public static final Project PROJECT = Project.PROJECT;
+
+    /**
+     * The table <code>citronella.sprint</code>.
+     */
+    public static final Sprint SPRINT = Sprint.SPRINT;
 
     /**
      * The table <code>citronella.user</code>.

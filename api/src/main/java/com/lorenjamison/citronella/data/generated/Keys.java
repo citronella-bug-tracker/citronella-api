@@ -5,10 +5,13 @@ package com.lorenjamison.citronella.data.generated;
 
 
 import com.lorenjamison.citronella.data.generated.tables.Project;
+import com.lorenjamison.citronella.data.generated.tables.Sprint;
 import com.lorenjamison.citronella.data.generated.tables.User;
 import com.lorenjamison.citronella.data.generated.tables.records.ProjectRecord;
+import com.lorenjamison.citronella.data.generated.tables.records.SprintRecord;
 import com.lorenjamison.citronella.data.generated.tables.records.UserRecord;
 
+import org.jooq.ForeignKey;
 import org.jooq.TableField;
 import org.jooq.UniqueKey;
 import org.jooq.impl.DSL;
@@ -27,7 +30,14 @@ public class Keys {
     // -------------------------------------------------------------------------
 
     public static final UniqueKey<ProjectRecord> KEY_PROJECT_PRIMARY = Internal.createUniqueKey(Project.PROJECT, DSL.name("KEY_project_PRIMARY"), new TableField[] { Project.PROJECT.ID }, true);
-    public static final UniqueKey<ProjectRecord> KEY_PROJECT_PROJECT_PROJECT_KEY_IDX = Internal.createUniqueKey(Project.PROJECT, DSL.name("KEY_project_project_project_key_IDX"), new TableField[] { Project.PROJECT.PROJECT_KEY }, true);
+    public static final UniqueKey<ProjectRecord> KEY_PROJECT_PROJECT_PROJECT_KEY_IDX = Internal.createUniqueKey(Project.PROJECT, DSL.name("KEY_project_project_project_key_IDX"), new TableField[] { Project.PROJECT.ISSUE_PREFIX }, true);
+    public static final UniqueKey<SprintRecord> KEY_SPRINT_PRIMARY = Internal.createUniqueKey(Sprint.SPRINT, DSL.name("KEY_sprint_PRIMARY"), new TableField[] { Sprint.SPRINT.ID }, true);
     public static final UniqueKey<UserRecord> KEY_USER_PRIMARY = Internal.createUniqueKey(User.USER, DSL.name("KEY_user_PRIMARY"), new TableField[] { User.USER.ID }, true);
     public static final UniqueKey<UserRecord> KEY_USER_USER_EXTERNAL_ID_IDX = Internal.createUniqueKey(User.USER, DSL.name("KEY_user_user_external_id_IDX"), new TableField[] { User.USER.EXTERNAL_ID }, true);
+
+    // -------------------------------------------------------------------------
+    // FOREIGN KEY definitions
+    // -------------------------------------------------------------------------
+
+    public static final ForeignKey<SprintRecord, ProjectRecord> SPRINT_FK = Internal.createForeignKey(Sprint.SPRINT, DSL.name("sprint_FK"), new TableField[] { Sprint.SPRINT.PROJECT_ID }, Keys.KEY_PROJECT_PRIMARY, new TableField[] { Project.PROJECT.ID }, true);
 }

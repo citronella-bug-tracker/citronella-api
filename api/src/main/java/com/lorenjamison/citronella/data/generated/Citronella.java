@@ -5,6 +5,7 @@ package com.lorenjamison.citronella.data.generated;
 
 
 import com.lorenjamison.citronella.data.generated.tables.Project;
+import com.lorenjamison.citronella.data.generated.tables.Sprint;
 import com.lorenjamison.citronella.data.generated.tables.User;
 
 import java.util.Arrays;
@@ -34,6 +35,11 @@ public class Citronella extends SchemaImpl {
     public final Project PROJECT = Project.PROJECT;
 
     /**
+     * The table <code>citronella.sprint</code>.
+     */
+    public final Sprint SPRINT = Sprint.SPRINT;
+
+    /**
      * The table <code>citronella.user</code>.
      */
     public final User USER = User.USER;
@@ -55,6 +61,7 @@ public class Citronella extends SchemaImpl {
     public final List<Table<?>> getTables() {
         return Arrays.<Table<?>>asList(
             Project.PROJECT,
+            Sprint.SPRINT,
             User.USER);
     }
 }
