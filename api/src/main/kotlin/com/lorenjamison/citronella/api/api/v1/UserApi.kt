@@ -18,7 +18,7 @@ class UserApi (@Autowired val userService: UserService) {
 
     @GetMapping(value = ["/{id}"],
         produces = ["application/JSON"])
-    fun getUserById(@PathVariable id: Int): User? {
+    fun getUserById(@PathVariable id: Long): User? {
         return userService.getUserById(id)
     }
 

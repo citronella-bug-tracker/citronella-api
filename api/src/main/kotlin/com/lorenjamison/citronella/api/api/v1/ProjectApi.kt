@@ -18,7 +18,7 @@ class ProjectApi(@Autowired val projectService: ProjectService) {
 
     @GetMapping(value = ["/{id}"],
         produces = ["application/JSON"])
-    fun getProjectById(@PathVariable id: Int): Project? {
+    fun getProjectById(@PathVariable id: Long): Project? {
         return projectService.getProjectById(id)
     }
 
@@ -29,7 +29,7 @@ class ProjectApi(@Autowired val projectService: ProjectService) {
     }
 
     @DeleteMapping(value = ["/{id}"])
-    fun archiveProject(@PathVariable id: Int) {
+    fun archiveProject(@PathVariable id: Long) {
         projectService.archiveProject(id)
     }
 
