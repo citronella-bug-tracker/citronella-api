@@ -13,8 +13,8 @@ class ProjectDao(private val dslContext: DSLContext) {
         return dslContext.fetchOne(PROJECT, PROJECT.ID.eq(id))?.into(Project::class.java)
     }
 
-    fun getProjectByKey(projectKey: String): Project? {
-        return dslContext.fetchOne(PROJECT, PROJECT.PROJECT_KEY.eq(projectKey))?.into(Project::class.java)
+    fun getProjectByPrefix(prefix: String): Project? {
+        return dslContext.fetchOne(PROJECT, PROJECT.ISSUE_PREFIX.eq(prefix))?.into(Project::class.java)
     }
 
     fun createProject(project: Project): Long {

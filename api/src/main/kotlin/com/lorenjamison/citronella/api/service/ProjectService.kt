@@ -20,8 +20,8 @@ class ProjectService(private val projectDao: ProjectDao) {
         return projectDao.getProjectById(id)
     }
 
-    fun getProjectByKey(projectKey: String): Project? {
-        return projectDao.getProjectByKey(projectKey)
+    fun getProjectByPrefix(prefix: String): Project? {
+        return projectDao.getProjectByPrefix(prefix)
     }
 
     fun archiveProject(id: Long) {

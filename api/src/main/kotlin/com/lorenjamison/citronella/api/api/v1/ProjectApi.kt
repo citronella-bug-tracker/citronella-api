@@ -22,10 +22,10 @@ class ProjectApi(@Autowired val projectService: ProjectService) {
         return projectService.getProjectById(id)
     }
 
-    @GetMapping(value = ["/key/{projectKey}"],
+    @GetMapping(value = ["/prefix/{projectKey}"],
         produces = ["application/JSON"])
-    fun getProjectById(@PathVariable projectKey: String): Project? {
-        return projectService.getProjectByKey(projectKey)
+    fun getProjectByPrefix(@PathVariable prefix: String): Project? {
+        return projectService.getProjectByPrefix(prefix)
     }
 
     @DeleteMapping(value = ["/{id}"])
