@@ -1,8 +1,0 @@
-#!/bin/bash
-
-docker run --name citronella-mariadb \
-  -p 3306:3306 \
-  -v /home/$(whoami)/citronella-db/config:/etc/mysql \
-  -v /home/$(whoami)/citronella-db/data:/var/lib/mysql \
-  -e MYSQL_ROOT_PASSWORD=citronelladbpass \
-  -d mariadb:10.5.9-focal

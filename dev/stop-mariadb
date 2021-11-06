@@ -1,5 +1,0 @@
-#!/bin/bash
-
-docker stop citronella-mariadb
-docker rm citronella-mariadb
-
