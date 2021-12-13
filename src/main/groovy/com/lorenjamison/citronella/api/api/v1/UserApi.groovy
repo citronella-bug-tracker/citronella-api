@@ -1,5 +1,6 @@
 package com.lorenjamison.citronella.api.api.v1
 
+import com.lorenjamison.citronella.api.model.ChangePasswordRequest
 import com.lorenjamison.citronella.api.model.User
 import com.lorenjamison.citronella.api.service.UserService
 import groovy.transform.CompileStatic
@@ -28,4 +29,8 @@ class UserApi {
         userService.getUserById(id)
     }
 
+    @PutMapping(value = ['/{id}/changepassword'], consumes = ['application/JSON'])
+    void changeUserPassword(@PathVariable Long id, @RequestBody ChangePasswordRequest request) {
+
+    }
 }

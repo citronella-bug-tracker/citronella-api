@@ -1,6 +1,7 @@
 package com.lorenjamison.citronella.api.service
 
 import com.lorenjamison.citronella.api.mapper.UserMapper
+import com.lorenjamison.citronella.api.model.ChangePasswordRequest
 import com.lorenjamison.citronella.api.model.User
 import groovy.transform.CompileStatic
 import org.springframework.beans.factory.annotation.Autowired
@@ -33,8 +34,20 @@ class UserService {
         userMapper.getUser(userId)
     }
 
-    void changeUserPassword(User user) {
+    void changeUserPassword(Long userId, ChangePasswordRequest request) {
+        if (request.newPassword != request.confirmNewPassword) {
+            //TODO: Return helpful error response
+            return
+        }
+        User user = getUserById(userId)
+        if (!user) {
+            //TODO: Return a helpful error response
+            return
+        }
+        //TODO: Verify old password matches
+
+        //TODO: Set new password
         userMapper.changePassword(user)
     }
-
+    
 }
