@@ -8,7 +8,7 @@
 		<version>2.6.1</version>
 		<relativePath/> <!-- lookup parent from repository -->
 	</parent>
-	<groupId>com.lorenjamison.citronella</groupId>
+	<groupId>com.github.sornerol.citronella</groupId>
 	<artifactId>citronella-api</artifactId>
 	<version>0.0.1-SNAPSHOT</version>
 	<name>citronella-api</name>
