@@ -24,7 +24,13 @@ class JwtUserDetailsService implements UserDetailsService {
     UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         CitronellaUser citronellaUser = userMapper.getUserByEmail(username)
         if (citronellaUser) {
-            return new User(username, citronellaUser.password, [])
+            return new User(username,
+                    citronellaUser.password,
+                    citronellaUser.enabled,
+                    true,
+                    true,
+                    true,
+                    [])
         } else {
             throw new UsernameNotFoundException("No account found for username/email address ${username}")
         }

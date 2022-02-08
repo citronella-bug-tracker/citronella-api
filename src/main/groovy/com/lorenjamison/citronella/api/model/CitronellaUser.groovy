@@ -9,6 +9,7 @@ class CitronellaUser {
     String firstName
     String lastName
     String email
+    Boolean enabled
     @JsonIgnore
     String password
 }

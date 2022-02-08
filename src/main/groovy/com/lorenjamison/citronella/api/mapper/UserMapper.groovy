@@ -17,8 +17,8 @@ interface UserMapper {
     CitronellaUser getUserByEmail(@Param('email') String email)
 
     @Insert('''INSERT INTO
-            user(firstName, lastName, email, password)
-            VALUES(#{firstName}, #{lastName}, #{email}, #{password})
+            user(firstName, lastName, email, password, enabled)
+            VALUES(#{firstName}, #{lastName}, #{email}, #{password}, #{enabled})
             ''')
     @Options(useGeneratedKeys = true, keyColumn = 'id')
     Long createUser(CitronellaUser user)
@@ -28,7 +28,8 @@ interface UserMapper {
         SET
             firstName = #{firstName},
             lastName = #{lastName},
-            email = #{email}
+            email = #{email},
+            enabled = #{enabled}
         WHERE id = #{id}
         ''')
     void updateUser(CitronellaUser user)
