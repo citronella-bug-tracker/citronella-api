@@ -1,7 +1,7 @@
 package com.lorenjamison.citronella.api.api.v1
 
 import com.lorenjamison.citronella.api.model.ChangePasswordRequest
-import com.lorenjamison.citronella.api.model.User
+import com.lorenjamison.citronella.api.model.CitronellaUser
 import com.lorenjamison.citronella.api.service.UserService
 import groovy.transform.CompileStatic
 import org.springframework.beans.factory.annotation.Autowired
@@ -20,12 +20,12 @@ class UserApi {
     }
 
     @PutMapping(value = ['/'], consumes = ['application/JSON'])
-    User upsertUser(@RequestBody User user) {
+    CitronellaUser upsertUser(@RequestBody CitronellaUser user) {
         userService.upsertUser(user)
     }
 
     @GetMapping(value = ['/{id}'])
-    User getUserById(@PathVariable Long id) {
+    CitronellaUser getUserById(@PathVariable Long id) {
         userService.getUserById(id)
     }
 

@@ -2,7 +2,7 @@ package com.lorenjamison.citronella.api.service
 
 import com.lorenjamison.citronella.api.mapper.UserMapper
 import com.lorenjamison.citronella.api.model.ChangePasswordRequest
-import com.lorenjamison.citronella.api.model.User
+import com.lorenjamison.citronella.api.model.CitronellaUser
 import groovy.transform.CompileStatic
 import org.springframework.beans.factory.annotation.Autowired
 import org.springframework.stereotype.Service
@@ -18,7 +18,7 @@ class UserService {
         this.userMapper = userMapper
     }
 
-    User upsertUser(User user) {
+    CitronellaUser upsertUser(CitronellaUser user) {
         Long userId
         if (user.id == null) {
             userId = userMapper.createUser(user)
@@ -30,8 +30,8 @@ class UserService {
         getUserById(userId)
     }
 
-    User getUserById (Long userId) {
-        userMapper.getUser(userId)
+    CitronellaUser getUserById (Long userId) {
+        userMapper.getUserById(userId)
     }
 
     void changeUserPassword(Long userId, ChangePasswordRequest request) {
@@ -39,7 +39,7 @@ class UserService {
             //TODO: Return helpful error response
             return
         }
-        User user = getUserById(userId)
+        CitronellaUser user = getUserById(userId)
         if (!user) {
             //TODO: Return a helpful error response
             return
