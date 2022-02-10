@@ -1,5 +1,7 @@
 package com.lorenjamison.citronella.api.service
 
+import com.lorenjamison.citronella.api.mapper.PrivilegeMapper
+import com.lorenjamison.citronella.api.mapper.RoleMapper
 import com.lorenjamison.citronella.api.mapper.UserMapper
 import com.lorenjamison.citronella.api.model.ChangePasswordRequest
 import com.lorenjamison.citronella.api.model.CitronellaUser
@@ -12,10 +14,16 @@ import org.springframework.stereotype.Service
 class UserService {
 
     private UserMapper userMapper
+    private RoleMapper roleMapper
+    private PrivilegeMapper privilegeMapper
 
     @Autowired
-    UserService(UserMapper userMapper) {
+    UserService(UserMapper userMapper,
+                RoleMapper roleMapper,
+                PrivilegeMapper privilegeMapper) {
         this.userMapper = userMapper
+        this.roleMapper = roleMapper
+        this.privilegeMapper = privilegeMapper
     }
 
     CitronellaUser upsertUser(CitronellaUser user) {
@@ -31,7 +39,15 @@ class UserService {
     }
 
     CitronellaUser getUserById (Long userId) {
-        userMapper.getUserById(userId)
+        CitronellaUser user = userMapper.getUserById(userId)
+        getRolesAndPrivilegesForUser(user)
+        user
+    }
+
+    CitronellaUser getUserByEmailAddress(String emailAddress) {
+        CitronellaUser user = userMapper.getUserByEmail(emailAddress)
+        getRolesAndPrivilegesForUser(user)
+        user
     }
 
     void changeUserPassword(Long userId, ChangePasswordRequest request) {
@@ -49,5 +65,15 @@ class UserService {
         //TODO: Set new password
         userMapper.changePassword(user)
     }
-    
+
+    private void getRolesAndPrivilegesForUser(CitronellaUser user) {
+        if (user) {
+            user.roles = roleMapper.getRolesForUser(user.id)
+            user.privileges = []
+            user.roles.each { role ->
+                user.privileges.addAll(privilegeMapper.getPrivilegesForRole(role.id))
+            }
+        }
+        user
+    }
 }
