@@ -4,6 +4,6 @@ import groovy.transform.CompileStatic
 
 @CompileStatic
 class LoginRequest {
-    String username
+    String email
     String password
 }

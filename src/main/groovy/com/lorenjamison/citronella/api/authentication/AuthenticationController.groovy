@@ -1,7 +1,9 @@
 package com.lorenjamison.citronella.api.authentication
 
+import com.lorenjamison.citronella.api.model.CitronellaUser
 import com.lorenjamison.citronella.api.model.authentication.LoginRequest
 import com.lorenjamison.citronella.api.model.authentication.LoginResponse
+import com.lorenjamison.citronella.api.service.UserService
 import com.lorenjamison.citronella.api.service.jwt.JwtUserDetailsService
 import groovy.transform.CompileStatic
 import groovy.util.logging.Log
@@ -23,14 +25,17 @@ import org.springframework.web.bind.annotation.RestController
 @Log
 class AuthenticationController {
     private JwtUserDetailsService userDetailsService
+    private UserService userService
     private AuthenticationManager authenticationManager
     private TokenManager tokenManager
 
     @Autowired
     AuthenticationManager(JwtUserDetailsService userDetailsService,
+                          UserService userService,
                           AuthenticationManager authenticationManager,
                           TokenManager tokenManager) {
         this.userDetailsService = userDetailsService
+        this.userService = userService
         this.authenticationManager = authenticationManager
         this.tokenManager = tokenManager
     }
@@ -38,17 +43,18 @@ class AuthenticationController {
     @PostMapping('/login')
     ResponseEntity<LoginResponse> login(@RequestBody LoginRequest loginRequest) {
         try {
-            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.username, loginRequest.password))
+            authenticationManager.authenticate(new UsernamePasswordAuthenticationToken(loginRequest.email, loginRequest.password))
         } catch (DisabledException e) {
-            log.severe("User ${loginRequest.username} is disabled")
+            log.severe("User ${loginRequest.email} is disabled")
             throw e
         } catch (BadCredentialsException e) {
-            log.severe("Bad credentials for user ${loginRequest.username}")
+            log.severe("Bad credentials for user ${loginRequest.email}")
             throw e
         }
 
-        UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.username)
+        UserDetails userDetails = userDetailsService.loadUserByUsername(loginRequest.email)
         String jwtToken = tokenManager.generateJwtToken(userDetails)
-        ResponseEntity.ok(new LoginResponse(jwtToken))
+        CitronellaUser user = userService.getUserByEmailAddress(loginRequest.email)
+        ResponseEntity.ok(new LoginResponse(jwtToken, user))
     }
 }
